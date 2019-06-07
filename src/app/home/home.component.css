@@ -1,0 +1,10 @@
+mat-card {
+  margin: auto;
+}
+main {
+  margin-top: 100 px;
+}
+.d-block w-100 {
+  width: 400px;
+  height: 300px;
+}

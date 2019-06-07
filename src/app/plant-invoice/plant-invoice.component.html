@@ -1,0 +1,54 @@
+<div
+  class="card "
+  style="border-bottom-style: groove;width: 80%;margin: auto;margin-top: 10px"
+  id="content"
+  #content
+>
+  <label style="font-weight: bold">Invoice No: {{ inumber }}</label>
+  <div class="card text-center" style="border: none">
+    <label class="card-title" style="font-weight: bold"
+      >Pepper Garden plant nursery</label
+    >
+    <p class="card-text">
+      No 720/1, Mankada road, Kadawatha <br />Registered No:PN 0216
+      <br />Telephone No: 0771617349 <br />Email: perppern@gmail.com
+    </p>
+  </div>
+  <div class="card" style="border: none">
+    <label class="" style="font-weight: bold"
+      >Customer Name: {{ customerName }}</label
+    >
+    <label style="font-weight: bold">Ordered Date: {{ orderedDate }}</label>
+  </div>
+  <div class="card" style="border: none">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Plant Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Discount Amount</th>
+          <th scope="col">Sub Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let corder of corderList">
+          <th scope="row">#</th>
+          <td>{{ corder.oplname }}</td>
+          <td>{{ corder.oqty }}</td>
+          <td>{{ corder.odiscount }}</td>
+          <td>{{ corder.osubtotal }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="card text-center" style="border: none;margin-top: 10px">
+  <button
+    class="btn btn-outline-success"
+    (click)="downloadPDF()"
+    style="width: 200px; margin: auto"
+  >
+    Download Invoice
+  </button>
+</div>

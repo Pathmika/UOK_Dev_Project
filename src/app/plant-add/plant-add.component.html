@@ -1,0 +1,98 @@
+<div class="card" style="margin: auto; margin-top: 10px">
+  <form (submit)="onAddPlants(plantForm)" #plantForm="ngForm">
+    <div class="card-header"><h4>Adding New Plant</h4></div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="lblPName">Plant Name</label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="InputFName"
+          name="pname"
+          aria-describedby="emailHelp"
+          placeholder="Enter Plant Name"
+          required
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <label>Plant Image</label>
+
+        <button class="btn btn-outline-success" (click)="filePicker.click()">
+          Select Image
+        </button>
+        <input
+          type="file"
+          name="pimage"
+          #filePicker
+          (change)="onImagePicked($event)"
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+          >Plant Category</label
+        >
+        <select
+          class="custom-select my-1 mr-sm-2"
+          id="inlineFormCustomSelectPlant"
+          name="pcategory"
+          ngModel
+        >
+          <option selected>Select Plant Category</option>
+          <option value="1">Fruit Plants</option>
+          <option value="2">Herbal Plants</option>
+          <option value="3">Decorative Plants</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="lblPunitPrice">Unit Price </label>
+
+        <input
+          type="number"
+          class="form-control"
+          id="InputPunitPrice"
+          name="punitPrice"
+          aria-describedby="emailHelp"
+          placeholder=""
+          required
+          ngModel
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lblFeedback">Description</label>
+        <textarea
+          class="form-control"
+          rows="5"
+          id="pdescription"
+          name="pdescription"
+          ngModel
+        ></textarea>
+      </div>
+
+      <!-- <div class="form-group">
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+          >Plant Category</label
+        >
+        <select
+          class="custom-select my-1 mr-sm-2"
+          id="inlineFormCustomSelectPlant"
+          name="pcategory"
+          ngmodel
+        >
+          <option selected>Select Plant Category</option>
+          <option value="1">Fruit Plants</option>
+          <option value="2">Herbal Plants</option>
+          <option value="3">Decorative Plants</option>
+        </select>
+      </div> -->
+
+      <button mat-raised type="submit" style="color: forestgreen">
+        Submit
+      </button>
+      <button mat-raised type="reset" style="color: orange">Reset</button>
+    </div>
+  </form>
+</div>

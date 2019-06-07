@@ -1,0 +1,120 @@
+<div class="card border-success" style="max-width: 1300px;">
+  <div class="row">
+    <div class="col-md-4">
+      <img
+        src="/assets/images/BlackPepper_Potted.jpg"
+        class="card-img"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <div class="row">
+          <h2 class="card-title">{{ pname }}</h2>
+        </div>
+
+        <div class="row">
+          <p class="card-text">
+            {{ pdescription }}
+          </p>
+        </div>
+        <br />
+        <!-- <div class="row">
+          <button class="btn btn-outline-success">More Info</button>
+        </div> -->
+        <br />
+        <div class="row">
+          <div class="col-md-4">
+            <h6>Stock status</h6>
+          </div>
+          <div class="col-md-4">
+            <h6>Unit Price</h6>
+          </div>
+          <div class="col-md-4">
+            <h6>Discount Criteria</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="availability" style="color:lime">Available</label>
+          </div>
+
+          <div class="col-md-4">
+            <label for="unitPrice">Rs.{{ punitprice }}/=</label>
+          </div>
+
+          <div class="col-md-4">
+            <label for="disCriteria">Rs.20/= for each plant </label>
+          </div>
+        </div>
+        <p class="card-text">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="lblOrderQty"><h6>Ordering Quantity</h6></label>
+        </div>
+        <div class="col-md-6">
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            (click)="openContModel(content, orderqtyinput.value)"
+          >
+            Add to Order list
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input
+            name="orderQty"
+            type="number"
+            value="0"
+            min="0"
+            max="1000"
+            step="1"
+            style="margin-left: 3px"
+            ngModel
+            #orderqtyinput
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header" style="background-color: lightgreen">
+    <h4 class="modal-title">Continuation</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Do you want to order more plants&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <a routerLink="/plants">
+      <button type="button" class="btn btn-light">
+        Yes
+      </button>
+    </a>
+    <a routerLink="/plantorderlist">
+      <button type="button" class="btn btn-light">
+        No
+      </button>
+    </a>
+    <!-- <button
+      type="button"
+      class="btn btn-light"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button> -->
+  </div>
+</ng-template>

@@ -1,0 +1,132 @@
+<div class="card" style="margin: auto; margin-top: 10px">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Plant Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Discount Amount</th>
+        <th scope="col">Sub Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orderList">
+        <th scope="row">1</th>
+        <td>{{ order.oplname }}</td>
+        <td>{{ order.oqty }}</td>
+        <td>{{ order.odiscount }}</td>
+        <td>{{ order.osubtotal }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="card" style="margin: auto;margin-top: 10px">
+  <div class="row">
+    <div class="col-lg-6">Total Discount: {{ totDiscount }}</div>
+    <div class="col-lg-6">Total Amount : {{ totAmount }}</div>
+  </div>
+  <div class="row"></div>
+</div>
+<div class="card" style="margin: auto;margin-top: 10px">
+  <div class="row">
+    <div class="col-lg-6">
+      <label for="dpI">Expected Issuing Date:</label>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              name="dpI"
+              [(ngModel)]="model1"
+              ngbDatepicker
+              #d1="ngbDatepicker"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary calendar"
+                (click)="d1.toggle()"
+                type="button"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- <pre>Model: {{ model1 | json }}</pre> -->
+    </div>
+    <div class="col-lg-6">
+      <label for="dpO">Ordered On:</label>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              class="form-control"
+              placeholder="yyyy-mm-dd"
+              name="dpO"
+              [(ngModel)]="model2"
+              ngbDatepicker
+              #d2="ngbDatepicker"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary calendar"
+                (click)="d2.toggle()"
+                type="button"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <pre></pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md" style="margin-left: 300px">
+      <button
+        class="btn btn-outline-success"
+        (click)="openConfirmLoginModel(content)"
+        *ngIf="!userStatus"
+      >
+        Confirm Order
+      </button>
+      <a routerLink="/plantinvoice" *ngIf="userStatus">
+        <button class="btn btn-outline-success">
+          Confirm Order
+        </button>
+      </a>
+      <button class="btn btn-outline-warning" style="margin-left: 15px">
+        Cancel Order
+      </button>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header" style="background-color: lightgreen">
+    <h4 class="modal-title">Order Confirmation</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Please login to continue&hellip;</p>
+  </div>
+  <div *ng if class="modal-footer">
+    <a routerLink="/login">
+      <button type="button" class="btn btn-light">
+        Login
+      </button>
+    </a>
+    <button
+      type="button"
+      class="btn btn-light"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

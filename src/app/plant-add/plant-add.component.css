@@ -1,0 +1,8 @@
+.card {
+  margin-top: 10px;
+  width: 75%;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
