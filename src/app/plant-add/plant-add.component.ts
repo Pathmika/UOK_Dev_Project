@@ -12,6 +12,7 @@ export class PlantAddComponent implements OnInit {
   pcategory = "";
   pdescription = "";
   image: File;
+  pimage: string;
 
   constructor(public plantService: PlantService) {}
 
@@ -25,14 +26,17 @@ export class PlantAddComponent implements OnInit {
       form.value.pname,
       form.value.pcategory,
       form.value.punitPrice,
-      form.value.pdescription
+      form.value.pdescription,
+      form.value.pstock
+      //form.value.pimagefile.name
     );
     form.resetForm();
   }
 
-  onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.image = file;
-    console.log(this.image);
-  }
+  // onImagePicked(event: Event) {
+  //   const file = (event.target as HTMLInputElement).files[0];
+  //   this.image = file;
+  //   console.log(this.image);
+  //   this.pimage = this.image.name;
+  // }
 }

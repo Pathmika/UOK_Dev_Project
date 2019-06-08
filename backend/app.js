@@ -37,7 +37,9 @@ app.post("/api/plants", (req, res, next) => {
     pname: req.body.pname,
     pcategory: req.body.pcategory,
     pdescription: req.body.pdescription,
-    punitPrice: req.body.punitPrice
+    punitPrice: req.body.punitPrice,
+    pstock: req.body.pstock
+    //pimage: req.body.pimage
   });
   plant.save();
   res.status(201).json({
@@ -55,7 +57,7 @@ app.get("/api/plants", (req, res, next) => {
 });
 
 app.get("/api/plants/:id", (req, res, next) => {
-  Plant.findOne({_id:req.params.id}).then(document => {
+  Plant.findOne({ _id: req.params.id }).then(document => {
     res.status(200).json({
       message: "Plant fetched successfully",
       plant: document

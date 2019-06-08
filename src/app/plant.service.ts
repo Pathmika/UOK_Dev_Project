@@ -30,7 +30,9 @@ export class PlantService {
               pcategory: plant.pcategory,
               pdescription: plant.pdescription,
               punitPrice: plant.punitPrice,
-              pid: plant._id
+              pid: plant._id,
+              pimage: plant.pimage,
+              pstock: plant.pstock
             };
           });
         })
@@ -56,14 +58,18 @@ export class PlantService {
     pname: string,
     pcategory: string,
     punitPrice: number,
-    pdescription: string
+    pdescription: string,
+    pstock: number,
+    //pimage: string
   ) {
     const plant: Plant = {
       pid: null,
       pname: pname,
       pcategory: pcategory,
       punitPrice: punitPrice,
-      pdescription: pdescription
+      pdescription: pdescription,
+      pstock: pstock,
+      //pimage: pimage
     };
     this.http
       .post<{ message: string }>("http://localhost:3000/api/plants", plant)

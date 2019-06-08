@@ -16,20 +16,14 @@
           ngModel
         />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Plant Image</label>
 
         <button class="btn btn-outline-success" (click)="filePicker.click()">
           Select Image
         </button>
-        <input
-          type="file"
-          name="pimage"
-          #filePicker
-          (change)="onImagePicked($event)"
-          ngModel
-        />
-      </div>
+        <input type="file" name="pimagefile" #filePicker ngModel />
+      </div> -->
       <div class="form-group">
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
           >Plant Category</label
@@ -54,6 +48,21 @@
           class="form-control"
           id="InputPunitPrice"
           name="punitPrice"
+          aria-describedby="emailHelp"
+          placeholder=""
+          required
+          ngModel
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pstock">Plant Stock </label>
+
+        <input
+          type="number"
+          class="form-control"
+          id="pstock"
+          name="pstock"
           aria-describedby="emailHelp"
           placeholder=""
           required

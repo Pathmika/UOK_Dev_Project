@@ -35,14 +35,12 @@
   <div class="col-md-4" *ngFor="let plant of plants">
     <div class="card">
       <div class="card-body">
-        <img src="/assets/images/plant1.jpg" class="card-img-top" />
+        <img src="/assets/images/BlackPepper_Potted.jpg" class="card-img-top" />
         <h5 class="card-title">{{ plant.pname }}</h5>
         <p class="card-text" style="float: left;">
           Rs.{{ plant.punitPrice }} /=
         </p>
-        <a
-          [routerLink]="['/plantsorderone', plant.pid]"
-          class="btn btn-success"
+        <a [routerLink]="['/plantsorderone', plant.pid]" class="btn btn-success"
           >Order</a
         >
       </div>

@@ -4,4 +4,6 @@ export interface Plant {
   pcategory: string;
   pdescription: string;
   punitPrice: number;
+  pstock: number;
+  //pimage: string;
 }
