@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { LoginService } from "../login.service";
 
 @Component({
   selector: "app-login",
@@ -9,11 +10,11 @@ import { NgForm } from "@angular/forms";
 export class LoginComponent implements OnInit {
   usernameAdmin: string = "Pathmika";
   passwordAdmin: string = "pwd";
-  usernameCust: string = "Cust";
-  passwordCust: string = "pwdC";
-  directResult: string;
+  usernameCust: string = "Nimal";
+  passwordCust: string = "pwdn";
+  directResult: boolean = false;
 
-  constructor() {}
+  constructor(public loginservice: LoginService) {}
 
   ngOnInit() {}
   onUserLogIn(loginForm: NgForm) {
@@ -21,12 +22,14 @@ export class LoginComponent implements OnInit {
       loginForm.value.username == this.usernameAdmin &&
       loginForm.value.password == this.passwordAdmin
     ) {
-      this.directResult = "admin";
+      this.directResult = false;
+      this.loginservice.checkLoginLogout("logged", loginForm.value.username);
     } else if (
       loginForm.value.username == this.usernameCust &&
       loginForm.value.password == this.passwordCust
     ) {
-      this.directResult = "cust";
+      this.directResult = true;
+      this.loginservice.checkLoginLogout("logged", loginForm.value.username);
     }
   }
 }

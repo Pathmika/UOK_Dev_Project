@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const Plant = require("./models/plant");
 const Feedback = require("./models/feedback");
+const Order = require("./models/order");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -64,6 +65,29 @@ app.get("/api/plants/:id", (req, res, next) => {
     });
   });
 });
+//PlantOrder request handling
+app.get("/api/orders", (req, res, next) => {
+  Order.find().then(documents => {
+    res.status(200).json({
+      message: "Orders fetched successfuly",
+      orders: documents
+    });
+  });
+});
+app.post("/api/orders", (req, res, next) => {
+  const order = new Order({
+    orderDate: req.body.orderDate,
+    oissueDate: req.body.oissueDate,
+    oPlants: req.body.oPlants,
+    ototAmount: req.body.ototAmount,
+    ototDiscount: req.body.ototDiscount,
+    oCustomerId: req.body.oCustomerId
+  });
+  order.save();
+  res.status(201).json({
+    message: "Order added successfuly"
+  });
+});
 //Feedback request handling
 app.post("/api/feedbacks", (req, res, next) => {
   const feedback = new Feedback({
@@ -78,6 +102,14 @@ app.post("/api/feedbacks", (req, res, next) => {
   feedback.save();
   res.status(201).json({
     message: "Feedback added successfully"
+  });
+});
+app.get("/api/feedbacks", (req, res, next) => {
+  Feedback.find().then(documents => {
+    res.status(200).json({
+      message: "Feedbacks fetched successfuly",
+      feedbacks: documents
+    });
   });
 });
 

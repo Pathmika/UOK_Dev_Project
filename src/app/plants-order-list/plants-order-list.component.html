@@ -38,7 +38,8 @@
               class="form-control"
               placeholder="yyyy-mm-dd"
               name="dpI"
-              [(ngModel)]="model1"
+              id="dpI"
+              ngModel
               ngbDatepicker
               #d1="ngbDatepicker"
             />
@@ -54,79 +55,55 @@
       </form>
       <!-- <pre>Model: {{ model1 | json }}</pre> -->
     </div>
-    <div class="col-lg-6">
-      <label for="dpO">Ordered On:</label>
-      <form class="form-inline">
-        <div class="form-group">
-          <div class="input-group">
-            <input
-              class="form-control"
-              placeholder="yyyy-mm-dd"
-              name="dpO"
-              [(ngModel)]="model2"
-              ngbDatepicker
-              #d2="ngbDatepicker"
-            />
-            <div class="input-group-append">
-              <button
-                class="btn btn-outline-secondary calendar"
-                (click)="d2.toggle()"
-                type="button"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </form>
-      <pre></pre>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md" style="margin-left: 300px">
-      <button
-        class="btn btn-outline-success"
-        (click)="openConfirmLoginModel(content)"
-        *ngIf="!userStatus"
-      >
-        Confirm Order
-      </button>
-      <a routerLink="/plantinvoice" *ngIf="userStatus">
-        <button class="btn btn-outline-success">
+
+    <div class="row">
+      <div class="col-md" style="margin-left: 300px">
+        <button
+          class="btn btn-outline-success"
+          (click)="openConfirmLoginModel(content)"
+          *ngIf="!userStatus"
+        >
           Confirm Order
         </button>
-      </a>
-      <button class="btn btn-outline-warning" style="margin-left: 15px">
-        Cancel Order
-      </button>
+        <a routerLink="/plantinvoice" *ngIf="userStatus">
+          <button class="btn btn-outline-success" (click)="onConfirm()">
+            Confirm Order
+          </button>
+        </a>
+        <button class="btn btn-outline-warning" style="margin-left: 15px">
+          Cancel Order
+        </button>
+      </div>
     </div>
   </div>
-</div>
-<ng-template #content let-modal>
-  <div class="modal-header" style="background-color: lightgreen">
-    <h4 class="modal-title">Order Confirmation</h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>Please login to continue&hellip;</p>
-  </div>
-  <div *ng if class="modal-footer">
-    <a routerLink="/login">
-      <button type="button" class="btn btn-light">
-        Login
+  <ng-template #content let-modal>
+    <div class="modal-header" style="background-color: lightgreen">
+      <h4 class="modal-title">Order Confirmation</h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
       </button>
-    </a>
-    <button
-      type="button"
-      class="btn btn-light"
-      (click)="modal.close('Close click')"
-    >
-      Close
-    </button>
-  </div>
-</ng-template>
+    </div>
+    <div class="modal-body">
+      <p>Please login to continue&hellip;</p>
+    </div>
+    <div *ng if class="modal-footer">
+      <a routerLink="/login">
+        <button type="button" class="btn btn-light">
+          Login
+        </button>
+      </a>
+      <button
+        type="button"
+        class="btn btn-light"
+        (click)="modal.close('Close click')"
+      >
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>

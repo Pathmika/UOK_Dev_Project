@@ -5,13 +5,15 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable({ providedIn: "root" })
 export class Feedbackservice {
-  private feedbacks: Feedback[] = [];
+  private feedbacks: any[] = [];
   private feedbacksUpdated = new Subject<Feedback[]>();
 
   constructor(private http: HttpClient) {}
 
   getFeedbacks() {
-    return [...this.feedbacks];
+    return this.http.get<{ message: string; feedbacks: any }>(
+      "http://localhost:3000/api/feedbacks"
+    );
   }
   addFeedbacks(
     fcfname: string,

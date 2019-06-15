@@ -10,6 +10,7 @@ import { Feedbackservice } from "./feedback.service";
 export class FeedbackComponent implements OnInit {
   dcfname = "";
   dclname = "";
+  fdate = new Date();
 
   constructor(public feedbackService: Feedbackservice) {}
 
@@ -24,9 +25,9 @@ export class FeedbackComponent implements OnInit {
     //   fdate: this.dfdate
     // };
     this.feedbackService.addFeedbacks(
-      form.value.cfname,
-      form.value.clname,
-      form.value.fdate.toString(),
+      form.value.fcfname,
+      form.value.fclname,
+      this.fdate.toDateString(),
       form.value.fperspective,
       form.value.ftype,
       form.value.fpcategory,

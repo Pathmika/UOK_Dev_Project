@@ -17,7 +17,7 @@
       aria-labelledby="button-basic"
     >
       <li role="menuitem">
-        <a class="dropdown-item" href="#">Fruits Plants</a>
+        <a class="dropdown-item" href="#">Fruit Plants</a>
       </li>
       <li role="menuitem">
         <a class="dropdown-item" href="#">Outdoor Decorative Plants</a>
@@ -35,39 +35,14 @@
   <div class="col-md-4" *ngFor="let plant of plants">
     <div class="card">
       <div class="card-body">
-        <img src="/assets/images/BlackPepper_Potted.jpg" class="card-img-top" />
+        <img src="/assets/images/{{ plant.pname }}.jpg" class="card-img-top" />
         <h5 class="card-title">{{ plant.pname }}</h5>
         <p class="card-text" style="float: left;">
           Rs.{{ plant.punitPrice }} /=
         </p>
+        <br />
         <a [routerLink]="['/plantsorderone', plant.pid]" class="btn btn-success"
           >Order</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <img src="/assets/images/plant2.JPG" class="card-img-top" />
-        <h5 class="card-title">Potted Garden plant2</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" class="btn btn-success">Order</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <img src="/assets/images/plant3.jpg" class="card-img-top" />
-        <h5 class="card-title">Potted Garden plant3</h5>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a routerLink="/plantsorderone"
-          ><button class="btn btn-success">Order</button></a
         >
       </div>
     </div>

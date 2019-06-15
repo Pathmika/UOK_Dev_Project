@@ -11,6 +11,7 @@ export class PlantsOrderListComponent implements OnInit {
   model1;
   model2;
   orderList: OrderList[] = [];
+  issueDate: string = "Sat Jun 15 2019";
   totAmount: number = 0;
   totDiscount: number = 0;
   userStatus: boolean;
@@ -29,5 +30,9 @@ export class PlantsOrderListComponent implements OnInit {
     //   this.oDiscount[this.i] = this.orderList[this.i].odiscount;
     //   this.osubTotal[this.i] = this.orderList[this.i].osubtotal;
     // }
+  }
+  onConfirm(issueDate: Date) {
+    //this.issueDate = issueDate.toDateString();
+    this.plantService.setOrderIssueDate(this.issueDate);
   }
 }

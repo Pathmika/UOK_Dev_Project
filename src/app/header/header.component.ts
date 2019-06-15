@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LoginService } from "../login.service";
 
 @Component({
   selector: "app-header",
@@ -6,7 +7,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  buttonStatus: boolean;
+  currentUser: string;
+  constructor(public loginService: LoginService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.buttonStatus = this.loginService.getShowButton();
+    this.currentUser=this.loginService.getUser();
+  }
 }

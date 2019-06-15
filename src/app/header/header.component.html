@@ -20,23 +20,31 @@
         </a>
       </th>
 
-      <th><a mat-button>Order History</a></th>
       <th>
-        <a mat-button>Consultancy Info</a>
+        <a mat-button><h5>Order History</h5></a>
       </th>
+
       <th>
         <a mat-button routerLink="/feedbackform">
           <h3>Feedback</h3>
         </a>
       </th>
-      <th><a mat-button>Contact Us</a></th>
+      <th>
+        <a mat-button><h5>Contact Us</h5></a>
+      </th>
 
       <th>
-        <a routerLink="/login">
+        <a *ngIf="buttonStatus" routerLink="/login">
           <button class="signIn" mat-raised-button color="accent">
             Sign In
           </button>
         </a>
+        <a *ngIf="!buttonStatus" routerLink="/">
+          <button class="signIn" mat-raised-button color="accent">
+            Sign Out
+          </button>
+        </a>
+        <p>{{ currentUser }}</p>
       </th>
     </tr>
   </table>

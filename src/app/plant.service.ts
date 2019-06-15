@@ -4,18 +4,25 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { ConfirmedOrder } from "./forder.model";
 
 @Injectable({ providedIn: "root" })
 export class PlantService {
   private plant: Plant;
   private plantReturned = new Subject<Plant>();
   private plants: Plant[] = [];
+  private forders: ConfirmedOrder[] = [];
   private plantsUpdated = new Subject<Plant[]>();
+  private ordersUpdated = new Subject<ConfirmedOrder[]>();
 
   private orderListarr: OrderList[] = [];
   private Fiorderlist: OrderList[] = [];
   private totAmount: number = 0;
   private totDiscount: number = 0;
+  private oftotAmount: number;
+  private oftotDiscount: number;
+
+  private OIssueDate: string;
 
   constructor(private http: HttpClient) {}
 
@@ -59,7 +66,7 @@ export class PlantService {
     pcategory: string,
     punitPrice: number,
     pdescription: string,
-    pstock: number,
+    pstock: number
     //pimage: string
   ) {
     const plant: Plant = {
@@ -68,7 +75,7 @@ export class PlantService {
       pcategory: pcategory,
       punitPrice: punitPrice,
       pdescription: pdescription,
-      pstock: pstock,
+      pstock: pstock
       //pimage: pimage
     };
     this.http
@@ -111,6 +118,39 @@ export class PlantService {
   getTotalDiscount() {
     return this.totDiscount;
   }
+
+  setOrderIssueDate(issueDate: string) {
+    this.OIssueDate = issueDate;
+  }
+  getOrderIssueDate() {
+    return this.OIssueDate;
+  }
   //Method to send the confirmed order To database after the confirm button clicked in template
-  addOrder() {}
+  addOrder(orderDate: string, oissueDate: string, oCustomerId: string) {
+    this.oftotAmount = this.getTotalAmount();
+    this.oftotDiscount = this.getTotalDiscount();
+
+    //final order
+    const forder: ConfirmedOrder = {
+      oid: null,
+      orderDate: orderDate,
+      oissueDate: oissueDate,
+      oPlants: this.getOrderList(),
+      ototAmount: this.oftotAmount,
+      ototDiscount: this.oftotDiscount,
+      oCustomerId: oCustomerId
+    };
+    this.http
+      .post<{ message: string }>("http://localhost:3000/api/orders", forder)
+      .subscribe(ordresponseData => {
+        console.log(ordresponseData.message);
+        this.forders.push(forder);
+        this.ordersUpdated.next([...this.forders]);
+      });
+  }
+  getOrders() {
+    return this.http.get<{ message: string; orders: any }>(
+      "http://localhost:3000/api/orders"
+    );
+  }
 }

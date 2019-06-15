@@ -1,11 +1,21 @@
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Order Created Succesfuly!</strong>
+  <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
 <div
   class="card "
-  style="border-bottom-style: groove;width: 80%;margin: auto;margin-top: 10px"
+  style="border-bottom-style: groove;width: 60%;margin: auto;margin-top: 10px"
   id="content"
   #content
 >
   <label style="font-weight: bold">Invoice No: {{ inumber }}</label>
   <div class="card text-center" style="border: none">
+    <img
+      src="/assets/images/pnLogo.png"
+      style="width: 50px;height: 50px;margin: auto"
+    />
     <label class="card-title" style="font-weight: bold"
       >Pepper Garden plant nursery</label
     >
@@ -18,7 +28,7 @@
     <label class="" style="font-weight: bold"
       >Customer Name: {{ customerName }}</label
     >
-    <label style="font-weight: bold">Ordered Date: {{ orderedDate }}</label>
+    <label style="font-weight: bold">Ordered Date: {{ odate }}</label>
   </div>
   <div class="card" style="border: none">
     <table class="table table-hover">
@@ -46,7 +56,7 @@
 <div class="card text-center" style="border: none;margin-top: 10px">
   <button
     class="btn btn-outline-success"
-    (click)="downloadPDF()"
+    (click)="downloadInvoice()"
     style="width: 200px; margin: auto"
   >
     Download Invoice

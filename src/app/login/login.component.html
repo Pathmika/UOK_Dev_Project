@@ -4,14 +4,19 @@
     (submit)="onUserLogIn(loginForm)"
     #loginForm="ngForm"
   >
-    <img
-      class="mb-4"
-      src="/docs/4.3/assets/brand/bootstrap-solid.svg"
-      alt=""
-      width="72"
-      height="72"
-    />
-    <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+    <div class="row">
+      <img
+        src="/assets/images/pnLogo.png"
+        style="width: 50px;height: 50px;margin-left: 5px;"
+      />
+      <h1
+        class="h3 mb-3 font-weight-normal"
+        style="font-weight: bolds;margin-top: 20px"
+      >
+        Sign In
+      </h1>
+    </div>
+    <br />
     <label for="inputUserName" class="sr-only">Username</label>
     <input
       type="text"
@@ -32,7 +37,7 @@
       id="inputPassword"
       name="password"
       class="form-control"
-      placeholder="Password"
+      placeholder="password"
       ngModel
       required
     />
@@ -40,14 +45,39 @@
     <!-- <div class="checkbox mb-3">
       <label> <input type="checkbox" value="remember-me" /> Remember me </label>
     </div> -->
-    <button class="btn btn-lg btn-success" type="submit" style="margin: center">
-      Sign in
-    </button>
+    <div class="row">
+      <div class="col">
+        <a *ngIf="directResult" routerLink="/adminpanel">
+          <button
+            class="btn btn-lg btn-outline-success "
+            type="submit"
+            style="margin: auto"
+          >
+            Sign in
+          </button>
+        </a>
+        <a *ngIf="!directResult" routerLink="/">
+          <button
+            class="btn btn-lg btn-outline-success "
+            type="submit"
+            style="margin: auto"
+          >
+            Sign in
+          </button>
+        </a>
+      </div>
+    </div>
     <br />
-    <label>New to plant tech</label>
-    <button class="btn btn-md btn-success btn-block" type="submit">
-      Sign up
-    </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+    <div class="row">
+      <label style="font-weight: bold">New to plant tech</label>
+
+      <button
+        class="btn btn-lg btn-outline-success"
+        style="margin-left: 10px"
+        type="submit"
+      >
+        Sign up
+      </button>
+    </div>
   </form>
 </mat-card>
