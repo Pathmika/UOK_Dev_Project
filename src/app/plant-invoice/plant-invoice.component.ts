@@ -18,6 +18,7 @@ export class PlantInvoiceComponent implements OnInit {
   odate: string;
   issueDate: string;
   corderList: OrderList[] = [];
+  oTotalAmnt: number;
 
   constructor(public plantService: PlantService) {}
 
@@ -27,6 +28,7 @@ export class PlantInvoiceComponent implements OnInit {
     this.inumber = "I" + "001";
     this.odate = this.orderedDate.toDateString();
     this.issueDate = this.plantService.getOrderIssueDate();
+    this.oTotalAmnt = this.plantService.getTotalAmount();
 
     this.plantService.addOrder(this.odate, this.issueDate, this.inumber);
   }

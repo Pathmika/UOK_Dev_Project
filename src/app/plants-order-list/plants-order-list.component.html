@@ -14,16 +14,16 @@
         <th scope="row">1</th>
         <td>{{ order.oplname }}</td>
         <td>{{ order.oqty }}</td>
-        <td>{{ order.odiscount }}</td>
-        <td>{{ order.osubtotal }}</td>
+        <td>Rs. {{ order.odiscount }}</td>
+        <td>Rs. {{ order.osubtotal }}</td>
       </tr>
     </tbody>
   </table>
 </div>
 <div class="card" style="margin: auto;margin-top: 10px">
   <div class="row">
-    <div class="col-lg-6">Total Discount: {{ totDiscount }}</div>
-    <div class="col-lg-6">Total Amount : {{ totAmount }}</div>
+    <div class="col-lg-6">Total Discount: Rs. {{ totDiscount }}</div>
+    <div class="col-lg-6">Total Amount : Rs. {{ totAmount }}</div>
   </div>
   <div class="row"></div>
 </div>

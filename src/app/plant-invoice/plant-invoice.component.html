@@ -46,13 +46,19 @@
           <th scope="row">#</th>
           <td>{{ corder.oplname }}</td>
           <td>{{ corder.oqty }}</td>
-          <td>{{ corder.odiscount }}</td>
-          <td>{{ corder.osubtotal }}</td>
+          <td>Rs. {{ corder.odiscount }}</td>
+          <td>Rs. {{ corder.osubtotal }}</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <div class="card" style="border: none">
+    <label style="font-weight: bold"
+      >Total Amount :Rs. {{ oTotalAmnt }}/=</label
+    >
+  </div>
 </div>
+
 <div class="card text-center" style="border: none;margin-top: 10px">
   <button
     class="btn btn-outline-success"
