@@ -17,19 +17,5 @@ export class LoginComponent implements OnInit {
   constructor(public loginservice: LoginService) {}
 
   ngOnInit() {}
-  onUserLogIn(loginForm: NgForm) {
-    if (
-      loginForm.value.username == this.usernameAdmin &&
-      loginForm.value.password == this.passwordAdmin
-    ) {
-      this.directResult = false;
-      this.loginservice.checkLoginLogout("logged", loginForm.value.username);
-    } else if (
-      loginForm.value.username == this.usernameCust &&
-      loginForm.value.password == this.passwordCust
-    ) {
-      this.directResult = true;
-      this.loginservice.checkLoginLogout("logged", loginForm.value.username);
-    }
-  }
+  
 }

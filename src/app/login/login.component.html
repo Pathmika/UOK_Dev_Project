@@ -17,30 +17,46 @@
       </h1>
     </div>
     <br />
-    <label for="inputUserName" class="sr-only">Username</label>
-    <input
-      type="text"
-      id="inputUserName"
-      name="username"
-      class="form-control"
-      placeholder="username"
-      required
-      ngModel
-      autofocus
-    />
-
+    <div class="form-group">
+      <label for="inputUserName" class="sr-only">Username</label>
+      <input
+        type="text"
+        id="inputUserName"
+        name="username"
+        class="form-control"
+        placeholder="username"
+        required
+        ngModel
+        autofocus
+      />
+    </div>
     <br />
-
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input
-      type="password"
-      id="inputPassword"
-      name="password"
-      class="form-control"
-      placeholder="password"
-      ngModel
-      required
-    />
+    <div class="form-group">
+      <label for="userrole" class="sr-only">Role</label>
+      <select
+        class="custom-select my-1 mr-sm-2"
+        id="userrole"
+        name="userrole"
+        ngModel
+      >
+        <option value="customer">Customer</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="inputPassword"
+        name="password"
+        class="form-control"
+        placeholder="password"
+        ngModel
+        required
+      />
+    </div>
     <br />
     <!-- <div class="checkbox mb-3">
       <label> <input type="checkbox" value="remember-me" /> Remember me </label>

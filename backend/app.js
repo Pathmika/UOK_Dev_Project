@@ -32,7 +32,50 @@ app.use((req, res, next) => {
   );
   next();
 });
+//user login
+app.post("/api/user/login",(req,res,next) => {
+  console.log("This is login route")
+  console.log(req.body);
 
+    let fetchedUser;
+    User.findOne({username:req.body.username,role:req.body.role})
+     .then(user=>{
+      if(!user)
+      {
+         console.log("User not found");
+          return res.status(401).json({
+          message: "Authentication Failed"
+        });
+      }
+      fetchedUser=user;
+      if(user.password==req.body.password)
+      {
+        const token=jwt.sign({username: user.username,role:user.role,userId:user._id},"This is the secret text");
+        console.log("Password Matches");
+        console.log(user);
+        res.status(200).json({
+          token:token,
+          username: user.username,
+          role:user.role,
+          userID:user.id
+        });
+      }
+      else
+      {
+        return res.status(401).json({
+          message: "Authentication failed"
+        });
+      }
+     })
+     .catch(err => {
+
+    })
+
+
+    res.status(200);
+});
+
+//adding new plants
 app.post("/api/plants", (req, res, next) => {
   const plant = new Plant({
     pname: req.body.pname,

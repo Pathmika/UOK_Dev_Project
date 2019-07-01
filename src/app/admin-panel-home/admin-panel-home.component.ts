@@ -10,8 +10,8 @@ import { map } from "rxjs/operators";
   styleUrls: ["./admin-panel-home.component.css"]
 })
 export class AdminPanelHomeComponent implements OnInit {
-  repF: boolean = false;
-  repO1: boolean = false;
+  repF: boolean = true;
+  repO1: boolean = true;
   //rufeedback: Feedback[] = [];
   i: number = 0;
   rfeedback: any[] = [];
@@ -27,17 +27,19 @@ export class AdminPanelHomeComponent implements OnInit {
     this.feedbackService.getFeedbacks().subscribe(feedbackdocs => {
       this.rfeedback = feedbackdocs.feedbacks;
     });
-    this.plantservice.getOrders().subscribe(orderdocs => {
-      this.rorder = orderdocs.orders;
-      for (this.i; this.rorder.length; this.i++) {
-        this.oplants = this.oplants + "," + this.rorder[this.i];
-      }
-    });
+    // this.plantservice.getOrders().subscribe(orderdocs => {
+    //   this.rorder = orderdocs.orders;
+    //   for (this.i; this.rorder.length; this.i++) {
+    //     this.oplants = this.oplants + "," + this.rorder[this.i];
+    //   }
+    // });
   }
   onReportFeedback() {
-    this.repF = true;
+    this.repF = false;
+    this.repO1 =true;
   }
   onReportOrders() {
-    this.repO1 = true;
+    this.repO1 = false;
+    this.repF=true
   }
 }

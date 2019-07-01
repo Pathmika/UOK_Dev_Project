@@ -50,6 +50,7 @@ import { PlantEditComponent } from "./plant-edit/plant-edit.component";
 import { AdminPanelHomeComponent } from "./admin-panel-home/admin-panel-home.component";
 import { PlantDeleteComponent } from "./plant-delete/plant-delete.component";
 import { PlantInvoiceComponent } from './plant-invoice/plant-invoice.component';
+import { ContactComponent } from './contact/contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import { PlantInvoiceComponent } from './plant-invoice/plant-invoice.component';
     PlantEditComponent,
     AdminPanelHomeComponent,
     PlantDeleteComponent,
-    PlantInvoiceComponent
+    PlantInvoiceComponent,
+    ContactComponent
   ],
   imports: [
     TooltipModule.forRoot(),
