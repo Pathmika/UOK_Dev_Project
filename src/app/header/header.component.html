@@ -34,17 +34,9 @@
       </th>
 
       <th>
-        <a *ngIf="buttonStatus" routerLink="/login">
-          <button class="signIn" mat-raised-button color="accent">
-            Sign In
-          </button>
+        <a mat-button routerLink="/login">
+          <h5 style="color: white">Sign In</h5>
         </a>
-        <a *ngIf="!buttonStatus" routerLink="/">
-          <button class="signIn" mat-raised-button color="accent">
-            Sign Out
-          </button>
-        </a>
-        <p>{{ currentUser }}</p>
       </th>
     </tr>
   </table>

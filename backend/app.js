@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const Plant = require("./models/plant");
 const Feedback = require("./models/feedback");
 const Order = require("./models/order");
+const User = require("./models/user");
+const jwt = require("jsonwebtoken");
+
 const mongoose = require("mongoose");
 
 const app = express();
@@ -33,46 +36,42 @@ app.use((req, res, next) => {
   next();
 });
 //user login
-app.post("/api/user/login",(req,res,next) => {
-  console.log("This is login route")
+app.post("/api/user/login", (req, res, next) => {
+  console.log("This is login route");
   console.log(req.body);
 
-    let fetchedUser;
-    User.findOne({username:req.body.username,role:req.body.role})
-     .then(user=>{
-      if(!user)
-      {
-         console.log("User not found");
-          return res.status(401).json({
+  let fetchedUser;
+  User.findOne({ username: req.body.username, role: req.body.role })
+    .then(user => {
+      if (!user) {
+        console.log("User not found");
+        return res.status(401).json({
           message: "Authentication Failed"
         });
       }
-      fetchedUser=user;
-      if(user.password==req.body.password)
-      {
-        const token=jwt.sign({username: user.username,role:user.role,userId:user._id},"This is the secret text");
+      fetchedUser = user;
+      if (user.password == req.body.password) {
+        const token = jwt.sign(
+          { username: user.username, role: user.role, userId: user._id },
+          "This is the secret text"
+        );
         console.log("Password Matches");
         console.log(user);
         res.status(200).json({
-          token:token,
+          token: token,
           username: user.username,
-          role:user.role,
-          userID:user.id
+          role: user.role,
+          userID: user.id
         });
-      }
-      else
-      {
+      } else {
         return res.status(401).json({
           message: "Authentication failed"
         });
       }
-     })
-     .catch(err => {
-
     })
+    .catch(err => {});
 
-
-    res.status(200);
+  res.status(200);
 });
 
 //adding new plants
@@ -85,9 +84,11 @@ app.post("/api/plants", (req, res, next) => {
     pstock: req.body.pstock
     //pimage: req.body.pimage
   });
-  plant.save();
-  res.status(201).json({
-    message: "Plant added successfully"
+  plant.save().then(createdPlant => {
+    res.status(201).json({
+      message: "Plant added successfully",
+      plantId:createdPlant._id
+    });
   });
 });
 
@@ -156,10 +157,50 @@ app.get("/api/feedbacks", (req, res, next) => {
   });
 });
 
-/*app.delete("/api/plants/:id", (req, res, next) => {
-  console.log(req.params.id);
+//Plant Deletion
+app.delete("/api/plants/:id", (req, res, next) => {
+  Plant.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result);
+  });
   res.status(200).json({ message: "plant deleted successfuly" });
 });
-*/
+
+app.post("/api/user/login", (req, res, next) => {
+  console.log("This is login route");
+  console.log(req.body);
+
+  let fetchedUser;
+  User.findOne({ username: req.body.username, role: req.body.role })
+    .then(user => {
+      if (!user) {
+        console.log("User not found");
+        return res.status(401).json({
+          message: "Authentication Failed"
+        });
+      }
+      fetchedUser = user;
+      if (user.password == req.body.password) {
+        const token = jwt.sign(
+          { username: user.username, role: user.role, userId: user._id },
+          "This is the secret text"
+        );
+        console.log("Password Matches");
+        console.log(user);
+        res.status(200).json({
+          token: token,
+          username: user.username,
+          role: user.role,
+          userID: user.id
+        });
+      } else {
+        return res.status(401).json({
+          message: "Authentication failed"
+        });
+      }
+    })
+    .catch(err => {});
+
+  res.status(200);
+});
 
 module.exports = app;

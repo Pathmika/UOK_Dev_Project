@@ -26,25 +26,25 @@
         class="form-control"
         placeholder="username"
         required
-        ngModel
+        [(ngModel)]="username"
         autofocus
       />
     </div>
-    <br />
+
     <div class="form-group">
       <label for="userrole" class="sr-only">Role</label>
       <select
         class="custom-select my-1 mr-sm-2"
         id="userrole"
         name="userrole"
-        ngModel
+        placeholder="select user role"
+        [(ngModel)]="userrole"
       >
         <option value="customer">Customer</option>
         <option value="admin">Admin</option>
       </select>
     </div>
-    <br />
-    <br />
+
     <div class="form-group">
       <label for="inputPassword" class="sr-only">Password</label>
       <input
@@ -53,7 +53,7 @@
         name="password"
         class="form-control"
         placeholder="password"
-        ngModel
+        [(ngModel)]="password"
         required
       />
     </div>
@@ -63,16 +63,7 @@
     </div> -->
     <div class="row">
       <div class="col">
-        <a *ngIf="directResult" routerLink="/adminpanel">
-          <button
-            class="btn btn-lg btn-outline-success "
-            type="submit"
-            style="margin: auto"
-          >
-            Sign in
-          </button>
-        </a>
-        <a *ngIf="!directResult" routerLink="/">
+        <a routerLink="/">
           <button
             class="btn btn-lg btn-outline-success "
             type="submit"
@@ -86,14 +77,15 @@
     <br />
     <div class="row">
       <label style="font-weight: bold">New to plant tech</label>
-
-      <button
-        class="btn btn-lg btn-outline-success"
-        style="margin-left: 10px"
-        type="submit"
-      >
-        Sign up
-      </button>
+      <a routerLink="/register">
+        <button
+          class="btn btn-lg btn-outline-success"
+          style="margin-left: 10px"
+          type="submit"
+        >
+          Sign up
+        </button>
+      </a>
     </div>
   </form>
 </mat-card>

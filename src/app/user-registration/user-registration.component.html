@@ -1,12 +1,151 @@
-<div class="card">
-  <div class="card-header">
-    User registration form
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Personal Information</h5>
-    <p class="card-text">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+<
+<div class="card" style="margin: auto; margin-top: 10px">
+  <form (submit)="onAddCustomer(customerForm)" #customerForm="ngForm">
+    <div class="card-header"><h4>User Registration</h4></div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="InputFName">First Name</label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="InputFName"
+          name="fcfname"
+          required
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <label for="InputLName">Last Name</label>
+
+        <input
+          type="text"
+          class="form-control"
+          id="InputLName"
+          name="fclname"
+          aria-describedby="emailHelp"
+          placeholder="Last Name"
+          required
+          ngModel
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lblPerspective">Perspective</label>
+        <br />
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="ppositive"
+            name="fperspective"
+            class="custom-control-input"
+            value="positive"
+            ngModel
+          />
+          <label class="custom-control-label" for="ppositive">Positive</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="pnegative"
+            name="fperspective"
+            class="custom-control-input"
+            value="negative"
+            ngModel
+          />
+          <label class="custom-control-label" for="pnegative">Negative</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lblPerspective">Feedback type</label>
+        <br />
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="customRadioInline3"
+            name="ftype"
+            class="custom-control-input"
+            value="general"
+            ngModel
+          />
+          <label class="custom-control-label" for="customRadioInline3"
+            >On General</label
+          >
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="customRadioInline4"
+            name="ftype"
+            class="custom-control-input"
+            value="specific"
+            ngModel
+          />
+          <label class="custom-control-label" for="customRadioInline4"
+            >On Specific plant</label
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+          >Plant Category</label
+        >
+        <select
+          class="custom-select my-1 mr-sm-2"
+          id="inlineFormCustomSelectPlant"
+          name="fpcategory"
+          ngModel
+        >
+          <option selected>Select Plant Category</option>
+          <option value="1">Fruit Plants</option>
+          <option value="2">Herbal Plants</option>
+          <option value="3">Decorative Plants</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="lblFeedback">Message</label>
+        <textarea
+          class="form-control"
+          rows="5"
+          id="comment"
+          name="fmessage"
+          ngModel
+        ></textarea>
+      </div>
+
+      <button class="btn btn-outline-success" type="submit">
+        Submit
+      </button>
+      <button class="btn btn-outline-warning" type="reset">
+        Reset
+      </button>
+    </div>
+  </form>
 </div>
+
+<!-- <div class="form-group">
+  <label for="lblPerspective">Perspective</label>
+  <br />
+  <div class="custom-control custom-radio custom-control-inline">
+    <input
+      type="radio"
+      id="negative"
+      name="fperspective"
+      class="custom-control-input"
+      value="positive"
+      ngModel
+    />
+    <label class="custom-control-label" for="negative">Positive</label>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input
+      type="radio"
+      id="positive"
+      name="fperspective"
+      class="custom-control-input"
+      value="negative"
+      ngModel
+    />
+    <label class="custom-control-label" for="positive">Negative</label>
+  </div>
+</div> -->

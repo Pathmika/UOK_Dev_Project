@@ -44,9 +44,10 @@ import { PlantsOrderListComponent } from "./plants-order-list/plants-order-list.
 import { UserRegistrationComponent } from "./user-registration/user-registration.component";
 import { PlantOrderProceedModelComponent } from "./plant-order-proceed-model/plant-order-proceed-model.component";
 import { PlantAddComponent } from "./plant-add/plant-add.component";
+import{PlantEditComponent} from "./plant-edit/plant-edit.component";
 import { AdminPanelHeaderComponent } from "./admin-panel-header/admin-panel-header.component";
 import { AdminPanelSidebarComponent } from "./admin-panel-sidebar/admin-panel-sidebar.component";
-import { PlantEditComponent } from "./plant-edit/plant-edit.component";
+
 import { AdminPanelHomeComponent } from "./admin-panel-home/admin-panel-home.component";
 import { PlantDeleteComponent } from "./plant-delete/plant-delete.component";
 import { PlantInvoiceComponent } from './plant-invoice/plant-invoice.component';

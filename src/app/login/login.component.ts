@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { LoginService } from "../login.service";
+import { AuthService } from "../auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -8,14 +9,19 @@ import { LoginService } from "../login.service";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  usernameAdmin: string = "Pathmika";
-  passwordAdmin: string = "pwd";
-  usernameCust: string = "Nimal";
-  passwordCust: string = "pwdn";
-  directResult: boolean = false;
+  username: string;
+  password: string;
+  role: string;
 
-  constructor(public loginservice: LoginService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
-  
+
+  onUserLogIn(form: NgForm) {
+    this.username = form.value.username;
+    this.password = form.value.password;
+    this.role = form.value.role;
+
+    this.authService.loginUser(this.username, this.password, this.role);
+  }
 }

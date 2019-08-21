@@ -79,8 +79,10 @@ export class PlantService {
       //pimage: pimage
     };
     this.http
-      .post<{ message: string }>("http://localhost:3000/api/plants", plant)
+      .post<{ message: string, plantId:string }>("http://localhost:3000/api/plants", plant)
       .subscribe(plresponseData => {
+        const plId=plresponseData.plantId;
+        plant.pid=plId;
         console.log(plresponseData.message);
         this.plants.push(plant);
         this.plantsUpdated.next([...this.plants]);
@@ -101,6 +103,19 @@ export class PlantService {
       osubtotal: osubtotal
     };
     this.orderListarr.push(orderList);
+  }
+
+  //Delete Plant
+  deletePlant(plantId: string) {
+    this.http
+      .delete("http://localhost:3000/api/plants/" + plantId)
+      .subscribe(() => {
+        const updatedPlants = this.plants.filter(
+          plant => plant.pid !== plantId
+        );
+        this.plants = updatedPlants;
+        this.plantsUpdated.next([...this.plants]);
+      });
   }
 
   getOrderList() {
