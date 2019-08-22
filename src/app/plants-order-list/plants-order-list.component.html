@@ -58,13 +58,6 @@
 
     <div class="row">
       <div class="col-md" style="margin-left: 300px">
-        <button
-          class="btn btn-outline-success"
-          (click)="openConfirmLoginModel(content)"
-          *ngIf="!userStatus"
-        >
-          Confirm Order
-        </button>
         <a routerLink="/plantinvoice" *ngIf="userStatus">
           <button class="btn btn-outline-success" (click)="onConfirm()">
             Confirm Order

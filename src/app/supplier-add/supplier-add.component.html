@@ -1,0 +1,116 @@
+<div class="card" style="margin: auto; margin-top: 10px">
+  <form (submit)="onAddCustomer(customerForm)" #customerForm="ngForm">
+    <div class="card-header"><h4>New Supplier</h4></div>
+    <div class="card-body">
+      <br />
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <label for="sfname">First Name</label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="sfname"
+              name="sfname"
+              required
+              ngModel
+            />
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="form-group">
+            <label for="slname">Last Name</label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="slname"
+              name="slname"
+              required
+              ngModel
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="saddress">
+          Location Address
+        </label>
+        <textarea
+          class="form-control"
+          rows="5"
+          id="saddress"
+          name="saddress"
+          ngModel
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <label for="stelephone">Telephone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="stelephone"
+            name="stelephone"
+            ngModel
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="semail">E mail</label>
+        <input
+          type="email"
+          class="form-control"
+          id="semail"
+          name="semail"
+          ngModel
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="spname">Supplying Plant</label>
+        <select class="form-control" id="exampleFormControlSelect2">
+          <option *ngFor="let plant of Splants">{{ plant.pname }}</option>
+        </select>
+      </div>
+
+      <br />
+
+      <button class="btn btn-outline-success" type="submit">
+        Add Supplier
+      </button>
+      <button class="btn btn-outline-warning" type="reset">
+        Reset Supplier
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- <div class="form-group">
+  <label for="lblPerspective">Perspective</label>
+  <br />
+  <div class="custom-control custom-radio custom-control-inline">
+    <input
+      type="radio"
+      id="negative"
+      name="fperspective"
+      class="custom-control-input"
+      value="positive"
+      ngModel
+    />
+    <label class="custom-control-label" for="negative">Positive</label>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input
+      type="radio"
+      id="positive"
+      name="fperspective"
+      class="custom-control-input"
+      value="negative"
+      ngModel
+    />
+    <label class="custom-control-label" for="positive">Negative</label>
+  </div>
+</div> -->

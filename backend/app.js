@@ -4,8 +4,9 @@ const Plant = require("./models/plant");
 const Feedback = require("./models/feedback");
 const Order = require("./models/order");
 const User = require("./models/user");
+const Customer = require("./models/customer");
 const jwt = require("jsonwebtoken");
-
+const router = express.Router();
 const mongoose = require("mongoose");
 
 const app = express();
@@ -87,7 +88,7 @@ app.post("/api/plants", (req, res, next) => {
   plant.save().then(createdPlant => {
     res.status(201).json({
       message: "Plant added successfully",
-      plantId:createdPlant._id
+      plantId: createdPlant._id
     });
   });
 });
@@ -163,6 +164,40 @@ app.delete("/api/plants/:id", (req, res, next) => {
     console.log(result);
   });
   res.status(200).json({ message: "plant deleted successfuly" });
+});
+
+//customer registration
+app.post("/api/customer/createCustomer", (req, res, next) => {
+  console.log(req.body);
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password,
+    role: "Customer"
+  });
+  user.save().then(addedUser => {
+    const customer = new Customer({
+      userID: addedUser.id,
+      firstname: req.body.fname,
+      lastname: req.body.lname,
+      address: req.body.address,
+      nic: req.body.nic,
+      telephone: req.body.telephone,
+      email: req.body.email
+    });
+    customer
+      .save()
+      .then(addedCustomer => {
+        res.status(200).json({
+          userAdded: true
+        });
+      })
+      .catch(err => {
+        console.log("Cannot add customer" + err);
+        res.status(201).json({
+          userAdded: false
+        });
+      });
+  });
 });
 
 app.post("/api/user/login", (req, res, next) => {

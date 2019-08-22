@@ -17,6 +17,9 @@ export class PlantService {
 
   private orderListarr: OrderList[] = [];
   private Fiorderlist: OrderList[] = [];
+  private oL: OrderList; //orderList for stock update purpose
+  private oqtyToBeUpdated: number;
+  private pidList: string[]; //IdList of plants for stock update
   private totAmount: number = 0;
   private totDiscount: number = 0;
   private oftotAmount: number;
@@ -79,10 +82,13 @@ export class PlantService {
       //pimage: pimage
     };
     this.http
-      .post<{ message: string, plantId:string }>("http://localhost:3000/api/plants", plant)
+      .post<{ message: string; plantId: string }>(
+        "http://localhost:3000/api/plants",
+        plant
+      )
       .subscribe(plresponseData => {
-        const plId=plresponseData.plantId;
-        plant.pid=plId;
+        const plId = plresponseData.plantId;
+        plant.pid = plId;
         console.log(plresponseData.message);
         this.plants.push(plant);
         this.plantsUpdated.next([...this.plants]);
@@ -140,8 +146,16 @@ export class PlantService {
   getOrderIssueDate() {
     return this.OIssueDate;
   }
+  //method to update stock
+  updateStock() {
+    this.orderListarr.forEach(orderList => {
+      orderList.oqty;
+    });
+  }
+
   //Method to send the confirmed order To database after the confirm button clicked in template
   addOrder(orderDate: string, oissueDate: string, oCustomerId: string) {
+    this.updateStock();
     this.oftotAmount = this.getTotalAmount();
     this.oftotDiscount = this.getTotalDiscount();
 

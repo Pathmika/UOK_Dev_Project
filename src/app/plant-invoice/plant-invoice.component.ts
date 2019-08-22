@@ -24,6 +24,7 @@ export class PlantInvoiceComponent implements OnInit {
 
   ngOnInit() {
     this.corderList = this.plantService.getOrderList();
+
     this.customerName = "N.G Perera";
     this.inumber = "I" + "001";
     this.odate = this.orderedDate.toDateString();

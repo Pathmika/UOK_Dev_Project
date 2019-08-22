@@ -33,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "jspdf": "^1.5.3",
     "mongoose": "^5.5.5",
+    "mongoose-sequence": "^5.1.0",
     "mongoose-unique-validator": "^2.0.3",
     "ngx-bootstrap": "^4.0.1",
     "rxjs": "~6.3.3",

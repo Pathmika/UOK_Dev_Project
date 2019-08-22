@@ -12,6 +12,7 @@ import { PlantsOrderListComponent } from "./plants-order-list/plants-order-list.
 import { PlantInvoiceComponent } from "./plant-invoice/plant-invoice.component";
 import { PlantEditComponent } from "./plant-edit/plant-edit.component";
 import { UserRegistrationComponent } from "./user-registration/user-registration.component";
+import { SupplierAddComponent } from "./supplier-add/supplier-add.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: "plantEdit", component: PlantEditComponent },
   { path: "adminpanel", component: AdminPanelHomeComponent },
   { path: "plantorderlist", component: PlantsOrderListComponent },
-  { path: "plantinvoice", component: PlantInvoiceComponent }
+  { path: "plantinvoice", component: PlantInvoiceComponent },
+  { path: "supplierAdd", component: SupplierAddComponent }
 ];
 
 @NgModule({

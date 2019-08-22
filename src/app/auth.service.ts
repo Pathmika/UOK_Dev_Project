@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
 import { User } from "./user.model";
-
+@Injectable({ providedIn: "root" })
 export class AuthService {
   private isAuthenticated = false;
   private token: string;
@@ -19,8 +19,15 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  registerCustomer(customer: any) {
+    return this.http.post<{ userAdded: boolean }>(
+      "http://localhost:3000/api/customer/createCustomer",
+      customer
+    );
+  }
+
   loginUser(username: string, password: string, role: string) {
-    const user = {
+    const user: User = {
       username: username,
       password: password,
       role: role

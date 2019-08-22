@@ -37,7 +37,6 @@
                 <button mat-menu-item routerLink="/plantEdit">
                   Edit Plant
                 </button>
-                
               </mat-menu>
             </li>
             <!-- <li class="nav-item">
@@ -50,10 +49,15 @@
               <button
                 style="width: 100px;height: 50px;font-size: 20px"
                 mat-button
-                [matMenuTriggerFor]="menu1"
+                [matMenuTriggerFor]="menu3"
               >
                 Suppliers
               </button>
+              <mat-menu #menu3="matMenu">
+                <button mat-menu-item routerLink="/supplierAdd">
+                  New Supplier
+                </button>
+              </mat-menu>
             </li>
             <li class="nav-item">
               <button

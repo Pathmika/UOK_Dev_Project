@@ -24,6 +24,7 @@ export class PlantsOrderOneComponent implements OnInit {
   pcategory: string;
   pdescription: string;
   punitprice: number;
+  pqty: number;
   orderqty: number;
   oplname: string;
 
@@ -43,6 +44,7 @@ export class PlantsOrderOneComponent implements OnInit {
       this.pcategory = plantdocument.plant.pcategory;
       this.pdescription = plantdocument.plant.pdescription;
       this.punitprice = plantdocument.plant.punitPrice;
+      this.pqty = plantdocument.plant.pstock;
       console.log(plantdocument.plant);
     });
   }
